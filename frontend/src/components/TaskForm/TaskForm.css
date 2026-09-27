@@ -1,9 +1,21 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .task-form {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  padding: 22px;
-  margin-bottom: 26px;
+  background: #ffffff;
+  border: 1px solid rgba(24, 24, 27, 0.08);
+  border-radius: 22px;
+  padding: 12px;
+  box-shadow: 0 8px 20px rgba(24, 24, 27, 0.02);
 }
 
 .task-form h2 {
@@ -11,60 +23,111 @@
   margin-bottom: 20px;
 }
 
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-}
-
-.input-group {
+.task-form-row {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.input-group label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #374151;
+.task-form-title-wrap {
+  flex: 1 1 250px;
 }
 
-.input-group input,
-.input-group select {
+.task-form-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.field-wrap {
+  min-width: 110px;
+}
+
+.duration-wrap {
+  min-width: 96px;
+}
+
+.category-wrap {
+  min-width: 120px;
+}
+
+.task-form-input {
   width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  background: #f9fafb;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  height: 46px;
+  border: 1px solid #e4e4e7;
+  background: #f7f7f5;
+  border-radius: 12px;
+  padding: 0 14px;
+  color: #18181b;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.input-group input:focus,
-.input-group select:focus {
-  outline: none;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+.task-form-input:focus {
+  background: #ffffff;
+  border-color: #d4d4d8;
+  box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.04);
+}
+
+.title-input {
+  min-width: 230px;
+}
+
+.task-form-input::placeholder {
+  color: #a1a1aa;
 }
 
 .primary-btn {
-  margin-top: 18px;
-  background: linear-gradient(135deg, #4f46e5, #6366f1);
-  color: white;
-  padding: 12px 18px;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 18px;
   border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.2s ease;
+  border-radius: 12px;
+  background: #18181b;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: transform 0.15s ease, opacity 0.2s ease, background 0.2s ease;
 }
 
 .primary-btn:hover {
+  background: #27272a;
   transform: translateY(-1px);
 }
 
 .form-error {
-  color: #dc2626;
-  margin-top: 14px;
-  margin-bottom: 0;
+  margin: 12px 2px 0;
+  color: #be123c;
+  font-size: 0.82rem;
+  line-height: 1.4;
   font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .task-form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .task-form-controls {
+    width: 100%;
+  }
+
+  .field-wrap,
+  .task-form-title-wrap,
+  .category-wrap,
+  .duration-wrap {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .primary-btn {
+    width: 100%;
+  }
 }

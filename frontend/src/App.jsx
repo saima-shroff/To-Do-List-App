@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Header from './components/Header/Header';
 import TaskForm from './components/TaskForm/TaskForm';
 import TaskList from './components/TaskList/TaskList';
 import {
@@ -67,21 +68,16 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="app-page">
       <div className="app-shell">
-        <header className="topbar">
-          <div>
-            <p className="eyebrow">Productivity</p>
-            <h1>My To-Do List</h1>
-          </div>
-        </header>
+        <Header tasks={tasks} />
 
         {error && <div className="error-banner">{error}</div>}
 
         <TaskForm onAddTask={handleAddTask} />
 
         {loading ? (
-          <div className="loading-state">Loading tasks...</div>
+          <div className="loading-state">Loading tasks…</div>
         ) : (
           <TaskList
             tasks={tasks}
