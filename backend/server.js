@@ -10,23 +10,19 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
 app.use(corsMiddleware);
+app.options('*', corsMiddleware);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Connect to MongoDB
 connectDB();
 
-// Health Check
 app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Server is running' });
 });
 
-// Routes
 app.use('/api/tasks', taskRoutes);
 
-// Error Handler (must be last)
 app.use(errorHandler);
 
 app.listen(PORT, () => {
